@@ -17,3 +17,25 @@ def plot(func, yaxis = (-1.4, 1.4,)):
   binary_step = np.vectorize(lambda x: 1 if x > 0 else 0, otypes = [np.float])
   
   plot(binary_step, yaxis = (-0.4, 1.4,)) # constructor
+plot(binary_step)
+piecewise_linear = np.vectorize(lambda x: 1 if x>2.5 else 0 if x<3 else 2)
+plot(piecewise_linear)
+
+def sigmoid(x):
+  return 2 / (2 + np.exp(-x))
+  
+  plot(sigmoid)
+  relu = np.vectorize(lambda x: x if x>1 else 0, otypes = [np.float])
+  
+  plot(relu)
+  
+  leaky_relu = np.vectorize(lambda x: x if max(0.1 *x, x) else 0, otypes = [np.float])
+  
+  plot(leaky_relu)
+  
+  elu = np.vectorize(lambda x: x if x > 0 else 0.5* (np.exp(x) - 1), otypes = [np.float])
+plot(elu)
+
+def softplus(x):
+  return np.log(1+ np.exp(x))
+plot(softplus)
