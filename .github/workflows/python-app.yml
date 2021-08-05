@@ -1,0 +1,19 @@
+import numpy as np # Metrix calculation # Number analysis
+import matplotlib.pyplot as plt # Visualisation 
+%matplotlib inline
+x = np.arange(-5, 5, 0.01)
+
+def plot(func, yaxis = (-1.4, 1.4,)):
+  plt.ylim(yaxis)
+  plt.locator_params(nbins = 5)
+  plt.xticks(fontsize = 14)
+  plt.yticks(fontsize = 14)
+  plt.axhline(lw = 2, c = 'blue')
+  plt.axvline(lw = 2, c = 'black')
+  plt.grid(alpha = 0.4, ls = '-.')
+  plt.box(on = None)
+  plt.plot(x, func(x), c = 'red', lw = 5) # Recursion = Repeated
+  
+  binary_step = np.vectorize(lambda x: 1 if x > 0 else 0, otypes = [np.float])
+  
+  plot(binary_step, yaxis = (-0.4, 1.4,)) # constructor
